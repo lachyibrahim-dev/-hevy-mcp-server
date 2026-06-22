@@ -69,4 +69,6 @@ def get_exercise_history(exercise_name: str) -> str:
     return "\n".join(history)
 
 if __name__ == "__main__":
-    mcp.run(transport="sse", host="0.0.0.0", port=8000)
+    import uvicorn
+    app = mcp.sse_app()
+    uvicorn.run(app, host="0.0.0.0", port=8000)
